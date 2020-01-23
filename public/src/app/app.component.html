@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Authors</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+  <h1>Favorite Authors</h1>
+  <form (submit)="createAuthor()">
+    <h5>Add a new Author:</h5>
+    <label>Name:</label>
+    <p class="error" *ngIf="errors.name">{{errors.name.message}}</p>
+    <input type="text" name="name" id="name" [(ngModel)]="newAuthor.name">
+    <input type="submit" value="Save">
+  </form>
+  <h3>We have quotes by:</h3>
+  <div id="authorinfo">
+  <table class="table table-bordered table-dark">
+    <thead>
+      <tr>
+        <th>Author</th>
+        <th>Actions available</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <div *ngFor="let author of authors">
+        <td>{{author.name}}</td>
+        <td>
+          <button id="delete"(click)="deleteAuthor(author._id)">Delete</button> | 
+          <button id="edit"(click)="authorForm(author)">Edit</button>
+        </td>
+      </div>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  <div *ngIf="editAuthor">
+    <form (submit)="editAuthor()">
+      <h3>Edit Author</h3>
+      <p class="error" *ngIf="editerrors.name">{{editerrors.name.message}}</p>
+      <input type="text" name="editAuthor.name" [(ngModel)]="editAuthor.name" />
+      <input id="edit"type="submit" value="Edit Author"/>
+    </form>
+  </div>
+</body>
+</html>
