@@ -8,20 +8,22 @@ export class HttpService {
 
   constructor(private _http: HttpClient) { }
 
-  getAuthors() {
-    return this._http.get('/authors')
+  getAllAuthors() {
+    return this._http.get('api/authors');
   }
-  getAuthorById(id) {
-    return this._http.get(`/authors/${id}`);
+  createAuthor(newAuthor) {
+    return this._http.post('api/authors', newAuthor)
   }
-  createAuthor(newAuthor: any) {
-    console.log("in service ", newAuthor)
-    return this._http.post('/new', newAuthor)
+  createQuote(id, quote){
+    return this._http.post(`api/authors/${id}/quotes`, quote);
   }
-  deleteAuthor(id) {
-    return this._http.delete(`/remove/${id}`)
+  getOneAuthor(authorId) {
+    return this._http.get(`api/authors/${authorId}`)
   }
-  updateAuthor(author) {
-    return this._http.put(`/authors/${author._id}`, author)
+  deleteAuthor(authorId) {
+    return this._http.delete(`api/authors/${authorId}`)
+  }
+  updateAuthor(authorToUpdate) {
+    return this._http.put(`api/authors/${authorToUpdate._id}`, authorToUpdate)
   }
 }

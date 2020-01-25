@@ -1,0 +1,20 @@
+<p>all-authors works!</p>
+<a [routerLink]="['/new']">Add an Author</a>
+<p>We have quotes by:</p>
+<table class="table table-bordered table-dark">
+    <thead>
+      <tr>
+        <th>Author</th>
+        <th>Actions available</th>
+      </tr>
+    </thead>
+    <tbody *ngIf='allAuthors.length > 0'>
+      <tr *ngFor="let author of allAuthors">
+        <td>{{author.name}}</td>
+        <td>
+          <button id="delete" (click)="delete(author._id)">Delete</button> | 
+          <button id="edit" [routerLink]="['/edit', author._id]">Edit</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
