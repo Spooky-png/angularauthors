@@ -1,10 +1,10 @@
 <p>new-author works!</p>
 <a [routerLink]="['/']">Home</a>
 <p>Add a New Author</p>
-<form (Submit)='onSubmit()'>
+<form (ngSubmit)='onSubmit()'>
     <label for='name'>Name</label>
     <input type='text' name='name' [(ngModel)]='authorToCreate.name'>
     <p *ngIf="errors">{{errors}}</p>
     <button [routerLink]="['/']">Cancel</button>
-    <button (Submit)='onSubmit()'>Submit</button>
+    <button (click)='onSubmit()'>Submit</button>
 </form>

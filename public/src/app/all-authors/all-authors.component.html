@@ -6,6 +6,7 @@
       <tr>
         <th>Author</th>
         <th>Actions available</th>
+
       </tr>
     </thead>
     <tbody *ngIf='allAuthors.length > 0'>
@@ -15,6 +16,8 @@
           <button id="delete" (click)="delete(author._id)">Delete</button> | 
           <button id="edit" [routerLink]="['/edit', author._id]">Edit</button>
         </td>
+        <td>{{author.quotes}}</td>
+        <td>{{author.rating}}</td>
       </tr>
     </tbody>
   </table>
